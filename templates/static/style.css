@@ -1,119 +1,76 @@
-/* Grundlegende Farben und Schrift */
 body {
-  font-family: "Segoe UI", sans-serif;
-  background-color: #f6f8fa;
-  color: #1c1c1c;
-  margin: 0;
-  padding: 0;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 2rem;
 }
 
-/* Container für Quiz */
 .container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 24px;
-  background-color: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+    background-color: #2a2a2a;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* Überschrift */
-h1 {
-  text-align: center;
-  font-size: 1.8em;
-  margin-bottom: 20px;
+h1, h2 {
+    color: #4ade80;
 }
 
-/* Fragebox */
-.question {
-  font-size: 1.2em;
-  margin-bottom: 20px;
-  line-height: 1.4;
+form {
+    margin-top: 1.5rem;
 }
 
-/* Eingabefeld */
 input[type="text"] {
-  width: 100%;
-  padding: 12px 16px;
-  font-size: 1em;
-  border: 2px solid #d0d7de;
-  border-radius: 8px;
-  box-sizing: border-box;
-  margin-bottom: 16px;
-  transition: border-color 0.2s;
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    background-color: #3b3b3b;
+    color: white;
 }
 
-input[type="text"]:focus {
-  outline: none;
-  border-color: #1cb0f6;
+button, a.button {
+    display: inline-block;
+    background-color: #4ade80;
+    color: #1e1e1e;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 1rem;
 }
 
-/* Button */
-button {
-  background-color: #1cb0f6;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1em;
-  cursor: pointer;
-  width: 100%;
-  transition: background-color 0.3s;
+button:hover, a.button:hover {
+    background-color: #22c55e;
 }
 
-button:hover {
-  background-color: #1094cc;
-}
-
-/* Feedback */
 .feedback {
-  padding: 12px;
-  border-radius: 8px;
-  margin-bottom: 16px;
-  font-weight: bold;
-  text-align: center;
+    font-weight: bold;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
 }
 
 .feedback.correct {
-  background-color: #d4f5dd;
-  color: #218739;
+    background-color: #14532d;
+    color: #bbf7d0;
 }
 
-.feedback.incorrect {
-  background-color: #fdecea;
-  color: #b32424;
+.feedback.wrong {
+    background-color: #7f1d1d;
+    color: #fecaca;
 }
 
-/* Erklärung */
-.explanation {
-  background-color: #f1f5f9;
-  padding: 12px;
-  border-left: 4px solid #1cb0f6;
-  border-radius: 6px;
-  margin-bottom: 16px;
-}
-
-/* Link zur nächsten Frage */
-.footer {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.footer a {
-  text-decoration: none;
-  background-color: #f5f5f5;
-  color: #1cb0f6;
-  padding: 10px 16px;
-  border-radius: 6px;
-  font-weight: 600;
-  transition: background-color 0.3s;
-}
-
-.footer a:hover {
-  background-color: #e1eaff;
-}
 .progress-container {
-    background-color: #e5e7eb;
+    background-color: #3b3b3b;
     border-radius: 999px;
     height: 12px;
     margin-bottom: 1.5rem;
@@ -124,23 +81,5 @@ button:hover {
     background-color: #4ade80;
     height: 100%;
     transition: width 0.3s ease;
-}
-body.dark {
-    background-color: #1f2937;
-    color: #f3f4f6;
-}
-
-body.dark .container {
-    background-color: #374151;
-}
-
-#darkModeToggle {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
 }
 
