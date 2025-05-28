@@ -2,42 +2,20 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <title>DSGVO-Quiz</title>
-  <button id="darkModeToggle">🌙 Dark Mode</button>
+  <title>DSGVO-Quiz – Start</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-  <div class="container">
-      <h1>📘 Datenschutz-Quiz</h1>
+<body class="start-screen">
+  <div class="quiz-container fade-in">
+    <h1>📘 DSGVO-Quiz</h1>
+    <p class="subtitle">Teste dein Wissen im Datenschutzrecht – spielerisch und interaktiv.</p>
+    
+    <a href="{{ url_for('question', qid=0) }}" class="start-button">🚀 Quiz starten</a>
 
-      {% if finished %}
-        <p><strong>🎉 Du hast {{ score }} von {{ total }} Fragen richtig beantwortet!</strong></p>
-        <p><a href="/reset">Quiz neu starten</a></p>
-      {% else %}
-        <p><strong>Punktestand: {{ score }} von {{ total }}</strong></p>
-        <form method="post">
-          <label for="answer">{{ question }}</label>
-          <input type="text" name="answer" id="answer" placeholder="Deine Antwort hier">
-          <button type="submit">Antwort absenden</button>
-        </form>
-        {% if feedback %}
-          <div class="feedback">{{ feedback }}</div>
-        {% endif %}
-      {% endif %}
+    <div class="animated-emoji">
+      🛡️📱💡
     </div>
-</body>
-  <footer class="footer">
-  <p>
-    © 2025 DSGVO-Quiz.
-    <span onclick="togglePrivacy()" class="privacy-toggle">📘 Datenschutzhinweis</span>
-  </p>
-  <div id="privacy-box" class="privacy-box" style="display: none;">
-    <p>
-      Dieses Quiz speichert keine personenbezogenen Daten. Es findet keine Analyse, kein Tracking und keine Weitergabe von Informationen statt. Die Nutzung erfolgt anonym.
-    </p>
-    <button onclick="togglePrivacy()">Schließen</button>
   </div>
-</footer>
+</body>
 </html>
-
