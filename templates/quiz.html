@@ -1,41 +1,47 @@
 <!doctype html>
 <html lang="de">
-<head>
-  <meta charset="utf-8">
-  <title>DSGVO-Quiz</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-  <div class="container">
-    <h1>🧠 DSGVO-Quiz</h1>
-    <div class="question">{{ question }}</div>
-    <form method="POST">
-        <input type="text" name="answer" placeholder="Deine Antwort eingeben" required>
+  <head>
+    <meta charset="utf-8">
+    <title>DSGVO-Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body onload="document.querySelector('input[name=answer]').focus()">
+    <main class="container">
+      <h1>🧠 DSGVO-Quiz</h1>
+
+      <div class="question">
+        <strong>Frage {{ qid + 1 }}:</strong><br>{{ question }}
+      </div>
+
+      <form method="POST">
+        <input type="text" name="answer" placeholder="Deine Antwort eingeben" autocomplete="off" required>
         <button type="submit">Antwort prüfen</button>
-    </form>
-    {% if feedback %}
+      </form>
+
+      {% if feedback %}
         <div class="feedback {% if 'Richtig' in feedback %}correct{% else %}incorrect{% endif %}">
-            {{ feedback }}
+          {{ feedback }}
         </div>
-    {% endif %}
+      {% endif %}
 
-    {% if correct_answers %}
+      {% if correct_answers %}
         <div class="explanation">
-            Richtige Antwort(en): {{ correct_answers }}
+          <strong>Richtige Antwort(en):</strong> {{ correct_answers }}
         </div>
-    {% endif %}
+      {% endif %}
 
-    {% if explanation %}
+      {% if explanation %}
         <div class="explanation">
-            Erklärung: {{ explanation }}
+          <strong>Erklärung:</strong> {{ explanation }}
         </div>
-    {% endif %}
+      {% endif %}
 
-    <div class="footer">
+      <div class="footer">
         <a href="{{ url_for('next_question', qid=qid) }}">➡️ Nächste Frage</a>
-    </div>
-</div>
-</body>
+      </div>
+    </main>
+  </body>
 </html>
+
 
