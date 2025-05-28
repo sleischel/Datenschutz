@@ -12,10 +12,10 @@ with open("questions.json", "r", encoding="utf-8") as f:
 # Startseite (animierte Einführung)
 @app.route("/")
 def index():
-    return redirect(url_for("start"))
+    return redirect(url_for("quiz"))  # ✅ 'quiz' ist der korrekte Funktionsname
     session.clear()
     return render_template("quiz.html")
-
+    
 # Fragen-Route
 @app.route("/questions/<int:qid>", methods=["GET", "POST"])
 def questions_route(qid):
