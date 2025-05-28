@@ -112,3 +112,16 @@ button:hover {
 .footer a:hover {
   background-color: #e1eaff;
 }
+.progress-container {
+    background-color: #e5e7eb;
+    border-radius: 999px;
+    height: 12px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background-color: #4ade80;
+    height: 100%;
+    transition: width 0.3s ease;
+}
