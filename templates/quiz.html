@@ -32,24 +32,19 @@
       </form>
     {% endif %}
   </div>
-    <div class="privacy-notice" onclick="togglePrivacy()">
-  🔒 Datenschutz-Hinweis ansehen
-</div>
-<div id="privacy-details" class="privacy-details hidden">
-  <p><strong>Datenschutz</strong></p>
-  <p>Diese Quiz-App speichert keine personenbezogenen Daten.</p>
-  <p>Alle Antworten werden ausschließlich lokal im Browser verarbeitet.</p>
-  <p>Es werden keine Cookies gesetzt und es findet kein Tracking statt.</p>
-</div>
-    <script>
-  function togglePrivacy() {
-    const details = document.getElementById('privacy-details');
-    details.classList.toggle('hidden');
-  }
-</script>
 </body>
-  <footer>
-  <p style="text-align:center; font-size: 0.8em; color: #888;">© 2025 DSGVO-Quiz. <span onclick="togglePrivacy()" style="cursor:pointer; color:#ccc; text-decoration:underline;">Datenschutzhinweis</span></p>
+  <footer class="footer">
+  <p>
+    © 2025 DSGVO-Quiz.
+    <span onclick="togglePrivacy()" class="privacy-toggle">📘 Datenschutzhinweis</span>
+  </p>
+  <div id="privacy-box" class="privacy-box" style="display: none;">
+    <p>
+      Dieses Quiz speichert keine personenbezogenen Daten. Es findet keine Analyse, kein Tracking und keine Weitergabe von Informationen statt. Die Nutzung erfolgt anonym.
+    </p>
+    <button onclick="togglePrivacy()">Schließen</button>
+  </div>
 </footer>
+
 </html>
 
