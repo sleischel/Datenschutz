@@ -1,31 +1,37 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, redirect, url_for, session
 import json
 import random
 
 app = Flask(__name__)
-app.secret_key = "supergeheim"  # → Bitte für Produktivbetrieb sicher wählen
+app.secret_key = "supergeheim"  # In Produktion ersetzen
 
 # Fragen laden
 with open("questions.json", "r", encoding="utf-8") as f:
     questions = json.load(f)
 
-@app.route("/", methods=["GET", "POST"])
-def quiz():
+# Startseite (animiert)
+@app.route("/quiz")
+def start():
+    session.clear()
+    return render_template("quiz.html")
+
+# Fragen-Logik
+@app.route("/questions/<int:qid>", methods=["GET", "POST"])
+def questions_route(qid):
     if "score" not in session:
         session["score"] = 0
-        session["question_index"] = 0
-        random.shuffle(questions)
+        session["order"] = list(range(len(questions)))
+        random.shuffle(session["order"])
 
     feedback = None
-    score = session["score"]
-    index = session["question_index"]
+    finished = qid >= len(questions)
 
-    # Wenn alle Fragen durch sind
-    if index >= len(questions):
-        finished = True
-        return render_template("quiz.html", finished=finished, score=score, total=len(questions))
-    
-    question = questions[index]
+    if finished:
+        return redirect(url_for("done"))
+
+    current_index = session["order"][qid]
+    question = questions[current_index]
+    score = session["score"]
 
     if request.method == "POST":
         user_answer = request.form.get("answer", "").strip().lower()
@@ -37,32 +43,34 @@ def quiz():
         else:
             feedback = f"❌ Falsch. Richtige Antwort: {question['answer']}"
 
-        session["question_index"] += 1
-
         return render_template(
-            "quiz.html",
-            question=questions[session["question_index"]]
-            if session["question_index"] < len(questions)
-            else None,
+            "question.html",
+            question=question["question"],
             feedback=feedback,
-            score=session["score"],
+            qid=qid,
             total=len(questions),
-            finished=session["question_index"] >= len(questions)
+            score=session["score"]
         )
 
     return render_template(
-        "quiz.html",
+        "question.html",
         question=question["question"],
         feedback=None,
-        score=score,
+        qid=qid,
         total=len(questions),
-        finished=False
+        score=session["score"]
     )
 
+# Abschlussseite
+@app.route("/done")
+def done():
+    return render_template("done.html", score=session.get("score", 0), total=len(questions))
+
+# Reset-Funktion (optional)
 @app.route("/reset")
 def reset():
     session.clear()
-    return "<p>Quiz zurückgesetzt. <a href='/'>Zurück zum Start</a></p>"
+    return redirect(url_for("start"))
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
