@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <title>Datenschutz-Quiz</title>
+  </head>
+  <body>
+    <h1>Datenschutz-Quiz</h1>
+    <p>{{ question }}</p>
+    <form method="post">
+      <input type="text" name="answer" placeholder="Deine Antwort hier">
+      <button type="submit">Antwort absenden</button>
+    </form>
+    {% if feedback %}
+      <p><strong>{{ feedback }}</strong></p>
+    {% endif %}
+  </body>
+</html>
