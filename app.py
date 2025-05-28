@@ -21,6 +21,7 @@ def load_questions():
         return []
 
 questions = load_questions()
+print(f"❗ Geladene Fragen: {questions}")
 
 # Toleranter Antwortvergleich
 def is_correct(user_input, valid_answers):
