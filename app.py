@@ -57,7 +57,7 @@ def questions_route(qid):
         )
 
     return render_template(
-        "question.html",
+        "questions.html",
         question=question_data["question"],
         feedback=None,
         explanation="",
