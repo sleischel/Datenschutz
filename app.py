@@ -23,7 +23,7 @@ def quiz():
     # Wenn alle Fragen durch sind
     if index >= len(questions):
         finished = True
-        return render_template("index.html", finished=finished, score=score, total=len(questions))
+        return render_template("quiz.html", finished=finished, score=score, total=len(questions))
     
     question = questions[index]
 
@@ -40,7 +40,7 @@ def quiz():
         session["question_index"] += 1
 
         return render_template(
-            "index.html",
+            "quiz.html",
             question=questions[session["question_index"]]
             if session["question_index"] < len(questions)
             else None,
@@ -51,7 +51,7 @@ def quiz():
         )
 
     return render_template(
-        "index.html",
+        "quiz.html",
         question=question["question"],
         feedback=None,
         score=score,
