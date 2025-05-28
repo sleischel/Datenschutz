@@ -41,10 +41,15 @@
   <p>Alle Antworten werden ausschließlich lokal im Browser verarbeitet.</p>
   <p>Es werden keine Cookies gesetzt und es findet kein Tracking statt.</p>
 </div>
+    <script>
+  function togglePrivacy() {
+    const details = document.getElementById('privacy-details');
+    details.classList.toggle('hidden');
+  }
+</script>
 </body>
   <footer>
   <p style="text-align:center; font-size: 0.8em; color: #888;">© 2025 DSGVO-Quiz. <span onclick="togglePrivacy()" style="cursor:pointer; color:#ccc; text-decoration:underline;">Datenschutzhinweis</span></p>
 </footer>
-
 </html>
 
