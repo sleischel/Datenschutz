@@ -1,26 +1,41 @@
-from flask import Flask, render_template, request
 import json
+import difflib
 
-app = Flask(__name__)
+# Funktion: Tolerante Antwortprüfung
+def is_correct(user_input, valid_answers):
+    user_input = user_input.lower().strip()
+    for answer in valid_answers:
+        if difflib.SequenceMatcher(None, user_input, answer).ratio() > 0.8:
+            return True
+    return False
 
-# Lade Fragen aus JSON-Datei
-with open("questions.json", "r", encoding="utf-8") as f:
-    questions = json.load(f)
-
-@app.route("/", methods=["GET", "POST"])
-def quiz():
-    feedback = None
-    question = questions[0]  # einfache Version: immer nur erste Frage
-
-    if request.method == "POST":
-        user_answer = request.form.get("answer", "").strip().lower()
-        correct_answer = question["answer"].strip().lower()
-        if user_answer in correct_answer or correct_answer in user_answer:
-            feedback = "✅ Richtig!"
+# Funktion: Quiz durchführen
+def run_quiz(questions):
+    print("🔐 DSGVO-Quiz gestartet! Bitte beantworte die folgenden Fragen:\n")
+    for idx, q in enumerate(questions, start=1):
+        print(f"❓ Frage {idx}: {q['question']}")
+        user_input = input("📝 Deine Antwort: ")
+        if is_correct(user_input, q["answers"]):
+            print("✅ Richtig!")
         else:
-            feedback = f"❌ Falsch. Die richtige Antwort ist: {question['answer']}"
+            print("❌ Leider falsch.")
+        print("📘 Richtige Antwort(en):", ", ".join(q["answers"]))
+        print("📖 Erläuterung:", q["explanation"])
+        print("-" * 60)
 
-    return render_template("index.html", question=question["question"], feedback=feedback)
+# JSON-Datei laden
+def load_questions_from_file(filename):
+    try:
+        with open(filename, 'r', encoding='utf-8') as file:
+            return json.load(file)
+    except Exception as e:
+        print("Fehler beim Laden der Datei:", e)
+        return []
 
+# Hauptprogramm
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    questions = load_questions_from_file("questions.json")
+    if questions:
+        run_quiz(questions)
+    else:
+        print("Keine Fragen gefunden.")
