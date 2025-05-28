@@ -1,30 +1,50 @@
-/* Schriftart Open Sans */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+:root {
+    --bg: #f9fafb;
+    --primary: #4b5563;
+    --accent: #10b981;
+    --accent-light: #d1fae5;
+    --error: #ef4444;
+    --error-light: #fee2e2;
+    --text: #1f2937;
+    --gray: #9ca3af;
+    --font: 'Open Sans', sans-serif;
+}
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #f9fafb;
-    color: #1f2937;
+    font-family: var(--font);
+    background-color: var(--bg);
+    color: var(--text);
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
 }
 
 .container {
+    width: 100%;
     max-width: 600px;
-    margin: 0 auto;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
     padding: 2rem;
-    background: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    border-radius: 12px;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    transition: transform 0.2s;
+}
+
+.container:hover {
+    transform: translateY(-2px);
 }
 
 h1 {
     font-size: 1.8rem;
     text-align: center;
-    color: #111827;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.question {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
 }
 
 form {
@@ -34,43 +54,54 @@ form {
 }
 
 input[type="text"] {
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    border: 1px solid #d1d5db;
+    padding: 0.75rem;
     border-radius: 8px;
-    outline: none;
-    transition: border-color 0.2s;
-}
-
-input[type="text"]:focus {
-    border-color: #4b5563;
+    border: 1px solid var(--gray);
+    font-size: 1rem;
 }
 
 button {
-    background-color: #374151;
-    color: white;
-    padding: 0.75rem 1.25rem;
-    font-size: 1rem;
-    border: none;
+    padding: 0.75rem 1rem;
     border-radius: 999px;
+    background-color: var(--accent);
+    color: white;
+    font-weight: bold;
+    border: none;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #1f2937;
+    background-color: #059669;
 }
 
 .feedback {
-    font-weight: bold;
-    font-size: 1.1rem;
-    text-align: center;
     margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.feedback.correct {
+    background-color: var(--accent-light);
+    color: var(--accent);
+}
+
+.feedback.incorrect {
+    background-color: var(--error-light);
+    color: var(--error);
+}
+
+.explanation {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--gray);
 }
 
 .footer {
+    margin-top: 2rem;
     text-align: center;
-    font-size: 0.85rem;
-    color: #6b7280;
-    padding: 1rem 0;
+    font-size: 0.8rem;
+    color: var(--gray);
 }
