@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 # Fragen laden mit Fehlerprüfung und Logging
 def load_questions():
+    import os
     print("📁 Aktuelles Verzeichnis:", os.getcwd())
     print("🔍 Existiert questions.json?", os.path.exists("questions.json"))
 
@@ -14,11 +15,12 @@ def load_questions():
         with open("questions.json", "r", encoding="utf-8") as f:
             questions = json.load(f)
             print(f"✅ {len(questions)} Fragen erfolgreich geladen.")
+            print("📋 Beispielhafte erste Frage:", questions[0] if questions else "Keine Fragen vorhanden.")
             return questions
     except Exception as e:
         print(f"❌ Fehler beim Laden der Fragen: {e}")
         return []
-
+        
 questions = load_questions()
 
 # Toleranter Antwortvergleich
