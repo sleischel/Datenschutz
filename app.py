@@ -55,18 +55,17 @@ def questions_route(qid):
             total=len(questions),
             score=session["score"]
         )
-
     return render_template(
         "questions.html",
         question=question_data["question"],
-        feedback=None,
-        explanation="",
+        feedback=feedback,
+        correct_answers=question_data["answers"],
+        explanation=question_data.get("explanation", ""),
         qid=qid,
-        next_qid=qid,
+        next_qid=qid + 1,
         total=len(questions),
         score=session["score"]
     )
-
 # Abschlussseite
 @app.route("/done")
 def done():
