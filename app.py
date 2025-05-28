@@ -7,7 +7,7 @@ app = Flask(__name__)
 # Fragen laden
 def load_questions():
     with open("questions.json", "r", encoding="utf-8") as f:
-        return json.load(f)
+        questions = json.load(f)
 
 questions = load_questions()
 
