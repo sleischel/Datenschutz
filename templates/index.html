@@ -3,17 +3,24 @@
   <head>
     <meta charset="utf-8">
     <title>Datenschutz-Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
-    <h1>Datenschutz-Quiz</h1>
-    <p>{{ question }}</p>
-    <form method="post">
-      <input type="text" name="answer" placeholder="Deine Antwort hier">
-      <button type="submit">Antwort absenden</button>
-    </form>
-    {% if feedback %}
-      <p><strong>{{ feedback }}</strong></p>
-    {% endif %}
+    <div class="container">
+      <h1>📘 Datenschutz-Quiz</h1>
+      <form method="post">
+        <label for="answer">{{ question }}</label>
+        <input type="text" name="answer" id="answer" placeholder="Deine Antwort hier">
+        <button type="submit">Antwort absenden</button>
+      </form>
+      {% if feedback %}
+        <div class="feedback">{{ feedback }}</div>
+      {% endif %}
+    </div>
+
+    <div class="footer">
+      © 2025 – Datenschutz-Quiz von Sarah
+    </div>
   </body>
 </html>
