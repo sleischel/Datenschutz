@@ -54,7 +54,8 @@ def question(qid):
         explanation = q["explanation"]
 
     return render_template("quiz.html", qid=qid, question=q["question"], feedback=feedback,
-                       correct_answers=correct_answers, explanation=explanation, total=len(questions))
+                       correct_answers=correct_answers, explanation=explanation,
+                       correct=correct, total_questions=len(questions))
 
 @app.route("/next/<int:qid>")
 def next_question(qid):
