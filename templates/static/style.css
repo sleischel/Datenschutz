@@ -125,3 +125,22 @@ button:hover {
     height: 100%;
     transition: width 0.3s ease;
 }
+body.dark {
+    background-color: #1f2937;
+    color: #f3f4f6;
+}
+
+body.dark .container {
+    background-color: #374151;
+}
+
+#darkModeToggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
