@@ -46,7 +46,7 @@ def questions_route(qid):
             feedback = f"❌ Falsch. Richtige Antwort: {question_data['answers'][0]}"
 
         return render_template(
-            "question.html",
+            "questions.html",
             question=question_data["question"],
             feedback=feedback,
             explanation=question_data.get("explanation", ""),
