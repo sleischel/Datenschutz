@@ -8,21 +8,34 @@
 </head>
 <body>
   <div class="container">
-    <h1>Frage {{ qid + 1 }}</h1>
-    <p>{{ question }}</p>
-
+    <h1>🧠 DSGVO-Quiz</h1>
+    <div class="question">{{ question }}</div>
+    <form method="POST">
+        <input type="text" name="answer" placeholder="Deine Antwort eingeben" required>
+        <button type="submit">Antwort prüfen</button>
+    </form>
     {% if feedback %}
-      <div class="feedback">{{ feedback }}</div>
-      <p><strong>Korrekte Antwort(en):</strong> {{ correct_answers }}</p>
-      <p><strong>Erklärung:</strong> {{ explanation }}</p>
-      <a href="{{ url_for('next_question', qid=qid) }}"><button>➡️ Nächste Frage</button></a>
-    {% else %}
-      <form method="POST">
-        <input type="text" name="answer" placeholder="Antwort eingeben..." required>
-        <button type="submit">✅ Abschicken</button>
-      </form>
+        <div class="feedback {% if 'Richtig' in feedback %}correct{% else %}incorrect{% endif %}">
+            {{ feedback }}
+        </div>
     {% endif %}
-  </div>
+
+    {% if correct_answers %}
+        <div class="explanation">
+            Richtige Antwort(en): {{ correct_answers }}
+        </div>
+    {% endif %}
+
+    {% if explanation %}
+        <div class="explanation">
+            Erklärung: {{ explanation }}
+        </div>
+    {% endif %}
+
+    <div class="footer">
+        <a href="{{ url_for('next_question', qid=qid) }}">➡️ Nächste Frage</a>
+    </div>
+</div>
 </body>
 </html>
 
