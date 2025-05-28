@@ -3,19 +3,24 @@ import json
 import random
 
 app = Flask(__name__)
-app.secret_key = "supergeheim"  # In Produktion unbedingt ändern
+app.secret_key = "supergeheim"  # In Produktion sicher setzen
 
-# Fragen laden
+# Fragen aus JSON laden
 with open("questions.json", "r", encoding="utf-8") as f:
     questions = json.load(f)
 
-# Startseite (animierte Einführung)
+# Einstiegsseite → leitet auf /quiz weiter
+@app.route("/")
+def index():
+    return redirect(url_for("quiz"))
+
+# Animierte Startseite
 @app.route("/quiz")
 def quiz():
     session.clear()
     return render_template("quiz.html")
-    
-# Fragen-Route
+
+# Fragen-Logik
 @app.route("/questions/<int:qid>", methods=["GET", "POST"])
 def questions_route(qid):
     if "score" not in session:
@@ -23,7 +28,6 @@ def questions_route(qid):
         session["order"] = list(range(len(questions)))
         random.shuffle(session["order"])
 
-    # Quiz beendet?
     if qid >= len(questions):
         return redirect(url_for("done"))
 
@@ -68,13 +72,12 @@ def questions_route(qid):
 def done():
     return render_template("done.html", score=session.get("score", 0), total=len(questions))
 
-# Reset-Funktion
+# Quiz zurücksetzen
 @app.route("/reset")
 def reset():
     session.clear()
-    return redirect(url_for("start"))
+    return redirect(url_for("quiz"))
 
 # App starten
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
-
