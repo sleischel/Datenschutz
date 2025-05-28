@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Quiz beendet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="done-screen">
+  <div class="quiz-container fade-in">
+    <h1>🎉 Quiz abgeschlossen!</h1>
+    <p class="score-display">Du hast <strong>{{ score }}</strong> von <strong>{{ total }}</strong> Punkten erreicht.</p>
+    <p>Gut gemacht – Datenschutz rockt! 🛡️💪</p>
+    <a href="{{ url_for('start') }}" class="start-button">🔁 Nochmal spielen</a>
+  </div>
+</body>
+</html>
