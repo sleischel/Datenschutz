@@ -1,68 +1,68 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, session
 import json
-import difflib
-import os
+import random
 
 app = Flask(__name__)
+app.secret_key = "supergeheim"  # → Bitte für Produktivbetrieb sicher wählen
 
-# Fragen laden mit Fehlerprüfung und Logging
-def load_questions():
-    import os
-    print("📁 Aktuelles Verzeichnis:", os.getcwd())
-    print("🔍 Existiert questions.json?", os.path.exists("questions.json"))
+# Fragen laden
+with open("questions.json", "r", encoding="utf-8") as f:
+    questions = json.load(f)
 
-    try:
-        with open("questions.json", "r", encoding="utf-8") as f:
-            questions = json.load(f)
-            print(f"✅ {len(questions)} Fragen erfolgreich geladen.")
-            return questions
-    except Exception as e:
-        print(f"❌ Fehler beim Laden der Fragen: {e}")
-        return []
+@app.route("/", methods=["GET", "POST"])
+def quiz():
+    if "score" not in session:
+        session["score"] = 0
+        session["question_index"] = 0
+        random.shuffle(questions)
 
-questions = load_questions()
-print(f"❗ Geladene Fragen: {questions}")
-
-# Toleranter Antwortvergleich
-def is_correct(user_input, valid_answers):
-    user_input = user_input.lower().strip()
-    for answer in valid_answers:
-        if difflib.SequenceMatcher(None, user_input, answer).ratio() > 0.8:
-            return True
-    return False
-
-@app.route("/")
-def index():
-    return redirect(url_for("question", qid=0))
-
-@app.route("/question/<int:qid>", methods=["GET", "POST"])
-def question(qid):
-    if qid >= len(questions):
-        return render_template("done.html")
-
-    q = questions[qid]
     feedback = None
-    explanation = None
-    correct_answers = None
-    correct = None
+    score = session["score"]
+    index = session["question_index"]
+
+    # Wenn alle Fragen durch sind
+    if index >= len(questions):
+        finished = True
+        return render_template("index.html", finished=finished, score=score, total=len(questions))
+    
+    question = questions[index]
 
     if request.method == "POST":
-        user_input = request.form.get("answer", "")
-        correct = is_correct(user_input, q["answers"])
-        feedback = "✅ Richtig!" if correct else "❌ Leider falsch."
-        correct_answers = ", ".join(q["answers"])
-        explanation = q["explanation"]
+        user_answer = request.form.get("answer", "").strip().lower()
+        correct_answer = question["answer"].strip().lower()
 
-    return render_template("quiz.html", qid=qid, question=q["question"], feedback=feedback,
-                       correct_answers=correct_answers, explanation=explanation,
-                       correct=correct, total_questions=len(questions))
+        if user_answer in correct_answer or correct_answer in user_answer:
+            feedback = "✅ Richtig!"
+            session["score"] += 1
+        else:
+            feedback = f"❌ Falsch. Richtige Antwort: {question['answer']}"
 
-@app.route("/next/<int:qid>")
-def next_question(qid):
-    return redirect(url_for("question", qid=qid + 1))
-    
-import os
+        session["question_index"] += 1
+
+        return render_template(
+            "index.html",
+            question=questions[session["question_index"]]
+            if session["question_index"] < len(questions)
+            else None,
+            feedback=feedback,
+            score=session["score"],
+            total=len(questions),
+            finished=session["question_index"] >= len(questions)
+        )
+
+    return render_template(
+        "index.html",
+        question=question["question"],
+        feedback=None,
+        score=score,
+        total=len(questions),
+        finished=False
+    )
+
+@app.route("/reset")
+def reset():
+    session.clear()
+    return "<p>Quiz zurückgesetzt. <a href='/'>Zurück zum Start</a></p>"
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # Nutze Umgebungsvariable oder Standard-Port 5000
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=10000)
