@@ -1,13 +1,23 @@
 from flask import Flask, render_template, request, redirect, url_for
 import json
 import difflib
+import os
 
 app = Flask(__name__)
 
-# Fragen laden
+# Fragen laden mit Fehlerprüfung und Logging
 def load_questions():
-    with open("questions.json", "r", encoding="utf-8") as f:
-        questions = json.load(f)
+    print("📁 Aktuelles Verzeichnis:", os.getcwd())
+    print("🔍 Existiert questions.json?", os.path.exists("questions.json"))
+
+    try:
+        with open("questions.json", "r", encoding="utf-8") as f:
+            questions = json.load(f)
+            print(f"✅ {len(questions)} Fragen erfolgreich geladen.")
+            return questions
+    except Exception as e:
+        print(f"❌ Fehler beim Laden der Fragen: {e}")
+        return []
 
 questions = load_questions()
 
