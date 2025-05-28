@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>DSGVO-Quiz – Frage {{ qid + 1 }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="quiz-screen">
+  <div class="quiz-container">
+    <h1>Frage {{ qid + 1 }}</h1>
+    <p class="question-text">{{ question }}</p>
+
+    <form method="post">
+      <input type="text" name="answer" placeholder="Deine Antwort" required>
+      <button type="submit">✅ Antwort prüfen</button>
+    </form>
+
+    {% if feedback %}
+      <div class="feedback">{{ feedback }}</div>
+      <div class="correct-answer">Richtige Antwort: {{ correct_answers }}</div>
+      <div class="explanation">💡 Erklärung: {{ explanation }}</div>
+      <a href="{{ url_for('quiz', qid=qid + 1) }}" class="next-button">➡️ Nächste Frage</a>
+    {% endif %}
+  </div>
+</body>
+</html>
