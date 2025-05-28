@@ -3,19 +3,19 @@ import json
 import random
 
 app = Flask(__name__)
-app.secret_key = "supergeheim"  # In Produktion ersetzen
+app.secret_key = "supergeheim"  # In Produktion unbedingt ändern
 
 # Fragen laden
 with open("questions.json", "r", encoding="utf-8") as f:
     questions = json.load(f)
 
-# Startseite (animiert)
+# Startseite (animierte Einführung)
 @app.route("/quiz")
 def start():
     session.clear()
     return render_template("quiz.html")
 
-# Fragen-Logik
+# Fragen-Route
 @app.route("/questions/<int:qid>", methods=["GET", "POST"])
 def questions_route(qid):
     if "score" not in session:
@@ -23,40 +23,42 @@ def questions_route(qid):
         session["order"] = list(range(len(questions)))
         random.shuffle(session["order"])
 
-    feedback = None
-    finished = qid >= len(questions)
-
-    if finished:
+    # Quiz beendet?
+    if qid >= len(questions):
         return redirect(url_for("done"))
 
     current_index = session["order"][qid]
-    question = questions[current_index]
-    score = session["score"]
+    question_data = questions[current_index]
+    feedback = None
 
     if request.method == "POST":
         user_answer = request.form.get("answer", "").strip().lower()
-        correct_answer = question["answer"].strip().lower()
+        correct_answers = [ans.strip().lower() for ans in question_data["answers"]]
 
-        if user_answer in correct_answer or correct_answer in user_answer:
+        if user_answer in correct_answers:
             feedback = "✅ Richtig!"
             session["score"] += 1
         else:
-            feedback = f"❌ Falsch. Richtige Antwort: {question['answer']}"
+            feedback = f"❌ Falsch. Richtige Antwort: {question_data['answers'][0]}"
 
         return render_template(
             "question.html",
-            question=question["question"],
+            question=question_data["question"],
             feedback=feedback,
+            explanation=question_data.get("explanation", ""),
             qid=qid,
+            next_qid=qid + 1,
             total=len(questions),
             score=session["score"]
         )
 
     return render_template(
         "question.html",
-        question=question["question"],
+        question=question_data["question"],
         feedback=None,
+        explanation="",
         qid=qid,
+        next_qid=qid,
         total=len(questions),
         score=session["score"]
     )
@@ -66,11 +68,13 @@ def questions_route(qid):
 def done():
     return render_template("done.html", score=session.get("score", 0), total=len(questions))
 
-# Reset-Funktion (optional)
+# Reset-Funktion
 @app.route("/reset")
 def reset():
     session.clear()
     return redirect(url_for("start"))
 
+# App starten
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
