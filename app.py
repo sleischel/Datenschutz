@@ -1,7 +1,17 @@
+from flask import Flask, render_template, request, redirect, url_for
 import json
 import difflib
 
-# Funktion: Tolerante Antwortprüfung
+app = Flask(__name__)
+
+# Fragen laden
+def load_questions():
+    with open("questions.json", "r", encoding="utf-8") as f:
+        return json.load(f)
+
+questions = load_questions()
+
+# Toleranter Antwortvergleich
 def is_correct(user_input, valid_answers):
     user_input = user_input.lower().strip()
     for answer in valid_answers:
@@ -9,33 +19,34 @@ def is_correct(user_input, valid_answers):
             return True
     return False
 
-# Funktion: Quiz durchführen
-def run_quiz(questions):
-    print("🔐 DSGVO-Quiz gestartet! Bitte beantworte die folgenden Fragen:\n")
-    for idx, q in enumerate(questions, start=1):
-        print(f"❓ Frage {idx}: {q['question']}")
-        user_input = input("📝 Deine Antwort: ")
-        if is_correct(user_input, q["answers"]):
-            print("✅ Richtig!")
-        else:
-            print("❌ Leider falsch.")
-        print("📘 Richtige Antwort(en):", ", ".join(q["answers"]))
-        print("📖 Erläuterung:", q["explanation"])
-        print("-" * 60)
+@app.route("/")
+def index():
+    return redirect(url_for("question", qid=0))
 
-# JSON-Datei laden
-def load_questions_from_file(filename):
-    try:
-        with open(filename, 'r', encoding='utf-8') as file:
-            return json.load(file)
-    except Exception as e:
-        print("Fehler beim Laden der Datei:", e)
-        return []
+@app.route("/question/<int:qid>", methods=["GET", "POST"])
+def question(qid):
+    if qid >= len(questions):
+        return render_template("done.html")
 
-# Hauptprogramm
+    q = questions[qid]
+    feedback = None
+    explanation = None
+    correct_answers = None
+    correct = None
+
+    if request.method == "POST":
+        user_input = request.form.get("answer", "")
+        correct = is_correct(user_input, q["answers"])
+        feedback = "✅ Richtig!" if correct else "❌ Leider falsch."
+        correct_answers = ", ".join(q["answers"])
+        explanation = q["explanation"]
+
+    return render_template("quiz.html", qid=qid, question=q["question"], feedback=feedback,
+                           correct_answers=correct_answers, explanation=explanation)
+
+@app.route("/next/<int:qid>")
+def next_question(qid):
+    return redirect(url_for("question", qid=qid + 1))
+
 if __name__ == "__main__":
-    questions = load_questions_from_file("questions.json")
-    if questions:
-        run_quiz(questions)
-    else:
-        print("Keine Fragen gefunden.")
+    app.run(debug=True)
