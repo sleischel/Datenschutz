@@ -1,6 +1,177 @@
 [
   {
-    "question": "Wie heißt das grundlegende europäische Datenschutzgesetz?",
-    "answer": "Datenschutz-Grundverordnung"
+    "question": "Welches Grundrecht wurde durch das Volkszählungsurteil 1983 entwickelt?",
+    "answers": ["recht auf informationelle selbstbestimmung", "informationelle selbstbestimmung"],
+    "explanation": "Das BVerfG leitete aus Art. 2 Abs. 1 i.V.m. Art. 1 Abs. 1 GG das Grundrecht auf informationelle Selbstbestimmung ab."
+  },
+  {
+    "question": "Welcher Artikel der EMRK schützt das Privatleben?",
+    "answers": ["artikel 8 emrk", "art 8 emrk"],
+    "explanation": "Art. 8 EMRK schützt das Privat- und Familienleben, die Wohnung und die Korrespondenz."
+  },
+  {
+    "question": "Welches Verhältnis besteht zwischen DSGVO und BDSG?",
+    "answers": ["dsgvo hat vorrang", "dsgvo gilt unmittelbar", "bdsg konkretisiert dsgvo"],
+    "explanation": "Die DSGVO gilt unmittelbar und hat Anwendungsvorrang; das BDSG ergänzt nur bei Öffnungsklauseln."
+  },
+  {
+    "question": "Welche Tätigkeiten sind vom sachlichen Anwendungsbereich der DSGVO ausgenommen?",
+    "answers": ["persönliche oder familiäre tätigkeiten", "gasp", "verarbeitung durch justizielle stellen"],
+    "explanation": "Art. 2 Abs. 2 DSGVO nennt Ausnahmen wie private Tätigkeiten, GASP oder Justizbereiche außerhalb der Richtlinie (z. B. JI-RL)."
+  },
+  {
+    "question": "Was bedeutet das Marktortprinzip der DSGVO?",
+    "answers": ["dsgvo gilt auch für unternehmen außerhalb der eu", "nicht-eu unternehmen die waren an eu bürger anbieten", "verhaltensbeobachtung in der eu"],
+    "explanation": "Nach Art. 3 Abs. 2 DSGVO gilt die Verordnung auch für Unternehmen außerhalb der EU, wenn sie in der EU tätig sind."
+  },
+  {
+    "question": "Welcher Fall begründete das Recht auf Vergessenwerden?",
+    "answers": ["google spain", "euGH c-131/12", "recht auf löschung durch suchmaschinen"],
+    "explanation": "Im Fall Google Spain (C-131/12) entschied der EuGH, dass Betroffene unter bestimmten Umständen die Löschung von Suchergebnissen verlangen können."
+  },
+  {
+    "question": "Was sind personenbezogene Daten im Sinne der DSGVO?",
+    "answers": ["informationen über identifizierte oder identifizierbare personen", "name ip-adresse standortdaten"],
+    "explanation": "Art. 4 Nr. 1 DSGVO definiert personenbezogene Daten als Informationen über identifizierte oder identifizierbare natürliche Personen."
+  },
+  {
+    "question": "Was unterscheidet Pseudonymisierung von Anonymisierung?",
+    "answers": ["pseudonymisierung = rückführbar mit zusatzwissen", "anonymisierung = nicht rückführbar", "anonym = nicht mehr einer person zuordenbar"],
+    "explanation": "Pseudonyme Daten sind mit Zusatzwissen identifizierbar; anonymisierte Daten unterfallen nicht mehr der DSGVO."
+  },
+  {
+    "question": "Welche Daten zählen zu den besonderen Kategorien nach Art. 9 DSGVO?",
+    "answers": ["gesundheitsdaten", "ethnische herkunft", "politische meinung", "sexuelle orientierung"],
+    "explanation": "Art. 9 DSGVO nennt sensible Daten, deren Verarbeitung grundsätzlich verboten ist – mit Ausnahmen in Art. 9 Abs. 2 DSGVO."
+  },
+  {
+    "question": "Wer ist Verantwortlicher im Sinne der DSGVO?",
+    "answers": ["wer zweck und mittel der verarbeitung bestimmt", "unternehmen oder behörde", "verantwortlicher art 4 nr 7"],
+    "explanation": "Nach Art. 4 Nr. 7 DSGVO ist der Verantwortliche die Stelle, die über die Zwecke und Mittel der Verarbeitung entscheidet."
+  },
+  {
+    "question": "Was versteht man unter dem Prinzip der Zweckbindung?",
+    "answers": ["daten nur für festgelegte zwecke", "keine nachträgliche zweckänderung", "ausnahme nur unter art 6 abs 4"],
+    "explanation": "Art. 5 Abs. 1 lit. b DSGVO schreibt vor, dass Daten nur für vorher festgelegte und legitime Zwecke verarbeitet werden dürfen."
+  },
+  {
+    "question": "Was bedeutet Datenminimierung?",
+    "answers": ["so wenig daten wie möglich", "nur notwendige daten verarbeiten", "zweckgebundene datenerhebung"],
+    "explanation": "Nach Art. 5 Abs. 1 lit. c DSGVO dürfen nur solche Daten erhoben werden, die für den Zweck notwendig sind."
+  },
+  {
+    "question": "Was bedeutet Rechenschaftspflicht nach der DSGVO?",
+    "answers": ["verantwortlicher muss grundsätze nachweisen", "nachweis der einhaltung", "art 5 abs 2 dsgvo"],
+    "explanation": "Die Rechenschaftspflicht (Art. 5 Abs. 2 DSGVO) verpflichtet den Verantwortlichen, die Einhaltung der Grundsätze zu belegen."
+  },
+  {
+    "question": "Unter welchen Voraussetzungen ist eine Datenverarbeitung nach Art. 6 DSGVO zulässig?",
+    "answers": ["einwilligung", "vertragserfüllung", "rechtliche verpflichtung", "lebenswichtige interessen", "öffentliche aufgabe", "berechtigtes interesse"],
+    "explanation": "Art. 6 Abs. 1 DSGVO enthält sechs Erlaubnistatbestände, die eine Datenverarbeitung rechtfertigen."
+  },
+  {
+    "question": "Was bedeutet Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO?",
+    "answers": ["freiwillig, informiert, widerruflich", "ausdruck der selbstbestimmung", "bewusste zustimmung zur verarbeitung"],
+    "explanation": "Die Einwilligung muss freiwillig, informiert, eindeutig und jederzeit widerrufbar sein (Art. 6 Abs. 1 lit. a DSGVO)."
+  },
+  {
+    "question": "Wann ist eine Zweckänderung nach Art. 6 Abs. 4 DSGVO zulässig?",
+    "answers": ["wenn neuer zweck kompatibel ist", "wenn verhältnismäßigkeit gewahrt bleibt", "bei beachtung art 6 abs 4 kriterien"],
+    "explanation": "Eine Zweckänderung ist zulässig, wenn der neue Zweck mit dem ursprünglichen vereinbar ist. Art. 6 Abs. 4 nennt Prüfkriterien."
+  },
+  {
+    "question": "Welche Betroffenenrechte nennt die DSGVO?",
+    "answers": ["auskunft", "berichtigung", "löschung", "einschränkung", "datenübertragbarkeit", "widerspruch"],
+    "explanation": "Die zentralen Rechte der betroffenen Person sind in Art. 15–21 DSGVO geregelt."
+  },
+  {
+    "question": "Was bedeutet Recht auf Auskunft nach Art. 15 DSGVO?",
+    "answers": ["betroffener kann erfahren ob und wie daten verarbeitet werden", "verantwortlicher muss informationen geben"],
+    "explanation": "Art. 15 DSGVO verpflichtet den Verantwortlichen, auf Anfrage umfassende Informationen über die Datenverarbeitung bereitzustellen."
+  },
+  {
+    "question": "Was regelt das Recht auf Datenübertragbarkeit nach Art. 20 DSGVO?",
+    "answers": ["daten in strukturiertem format erhalten", "daten an anderen anbieter übertragen", "kontrolle über eigene daten"],
+    "explanation": "Betroffene können ihre Daten in einem gängigen Format erhalten und an einen anderen Verantwortlichen übertragen lassen (Art. 20 DSGVO)."
+  },
+  {
+    "question": "Was ermöglicht der Widerspruch nach Art. 21 DSGVO?",
+    "answers": ["verarbeitung stoppen", "widerspruch bei besonderer situation", "insb bei direkter werbung"],
+    "explanation": "Betroffene können jederzeit der Verarbeitung widersprechen – insbesondere bei Direktwerbung (Art. 21 DSGVO)."
+  },
+  {
+    "question": "Welche Sanktionen sieht die DSGVO bei Verstößen vor?",
+    "answers": ["bußgelder", "verwarnung", "untersagung der verarbeitung", "verwaltungsmaßnahmen"],
+    "explanation": "Die DSGVO sieht abgestufte Sanktionen vor, insbesondere Geldbußen bis zu 20 Mio. € oder 4 % des Jahresumsatzes (Art. 83 DSGVO)."
+  },
+  {
+    "question": "Welche Kriterien berücksichtigt die Aufsichtsbehörde bei der Festlegung von Bußgeldern?",
+    "answers": ["schwere des verstoßes", "vorsatz oder fahrlässigkeit", "kooperation mit behörde", "anzahl betroffener"],
+    "explanation": "Art. 83 Abs. 2 DSGVO nennt Faktoren wie Schwere, Wiederholung, Kooperation und Schadensausmaß."
+  },
+  {
+    "question": "Wie unterscheidet sich Art. 83 Abs. 4 von Abs. 5 DSGVO?",
+    "answers": ["abs 4: bis 10 mio oder 2 prozent", "abs 5: bis 20 mio oder 4 prozent", "abs 5 für gravierendere verstöße"],
+    "explanation": "Art. 83 Abs. 5 DSGVO betrifft schwerwiegendere Verstöße (z. B. gegen Grundprinzipien), daher höhere Maximalstrafe."
+  },
+  {
+    "question": "Welche Rechte haben betroffene Personen im Schadensfall?",
+    "answers": ["schadensersatz", "gerichtlicher rechtsbehelf", "beschwerde bei aufsichtsbehörde"],
+    "explanation": "Betroffene können zivilrechtlich auf Ersatz materieller oder immaterieller Schäden klagen (Art. 82 DSGVO)."
+  },
+  {
+    "question": "Was ist eine federführende Aufsichtsbehörde?",
+    "answers": ["behörde des hauptsitzes", "zuständig bei grenzüberschreitender verarbeitung", "koordiniert mit anderen behörden"],
+    "explanation": "Nach Art. 56 DSGVO ist bei grenzüberschreitender Verarbeitung die Behörde des Hauptsitzes zuständig."
+  },
+  {
+    "question": "Was ist das Kohärenzverfahren nach Art. 63 DSGVO?",
+    "answers": ["abstimmung zwischen aufsichtsbehörden", "einheitliche anwendung in eu", "entscheidungen des edsa"],
+    "explanation": "Ziel des Kohärenzverfahrens ist die konsistente Anwendung der DSGVO durch Abstimmung zwischen den Behörden."
+  },
+  {
+    "question": "Was ist der Europäische Datenschutzausschuss (EDSA)?",
+    "answers": ["koordiniert anwendung der dsgvo", "besteht aus mitgliedstaaten", "kann verbindliche entscheidungen treffen"],
+    "explanation": "Der EDSA nach Art. 68 ff. DSGVO unterstützt die einheitliche Anwendung der DSGVO und gibt Leitlinien heraus."
+  },
+  {
+    "question": "Wann ist eine Datenschutz-Folgenabschätzung (DSFA) erforderlich?",
+    "answers": ["bei hohem risiko", "neue technologien", "systematische überwachung", "besondere kategorien"],
+    "explanation": "Eine DSFA nach Art. 35 DSGVO ist nötig, wenn eine Verarbeitung voraussichtlich ein hohes Risiko für die Rechte und Freiheiten natürlicher Personen mit sich bringt."
+  },
+  {
+    "question": "Was enthält eine Datenschutz-Folgenabschätzung?",
+    "answers": ["beschreibung der verarbeitung", "bewertung der risiken", "maßnahme zur risikominderung", "interessenabwägung"],
+    "explanation": "Art. 35 Abs. 7 DSGVO schreibt vor, dass die DSFA die Art, Notwendigkeit, Risiken und Abhilfemaßnahmen dokumentieren muss."
+  },
+  {
+    "question": "Welche Behörde kann eine Vorab-Konsultation nach Art. 36 DSGVO verlangen?",
+    "answers": ["aufsichtsbehörde", "datenschutzbehörde"],
+    "explanation": "Wenn trotz Maßnahmen ein hohes Risiko verbleibt, muss die Aufsichtsbehörde konsultiert werden (Art. 36 DSGVO)."
+  },
+  {
+    "question": "Welche Normen regeln die Übermittlung personenbezogener Daten in Drittstaaten?",
+    "answers": ["art 44 bis 50 dsgvo", "artikel 44 bis 50 dsgvo"],
+    "explanation": "Art. 44–50 DSGVO regeln die Voraussetzungen für die Übermittlung personenbezogener Daten in Staaten außerhalb der EU/des EWR."
+  },
+  {
+    "question": "Wann ist eine Datenübermittlung in einen Drittstaat nach Art. 45 DSGVO zulässig?",
+    "answers": ["wenn angemessenheitsbeschluss vorliegt", "wenn eu-kommission angemessenheit bestätigt", "wenn schutzniveau vergleichbar ist"],
+    "explanation": "Nach Art. 45 DSGVO darf eine Übermittlung erfolgen, wenn die EU-Kommission einen Angemessenheitsbeschluss erlassen hat."
+  },
+  {
+    "question": "Was entschied der EuGH in Schrems II?",
+    "answers": ["privacy shield ist ungültig", "standardvertragsklauseln bleiben zulässig", "zusätzliche schutzmaßnahmen erforderlich"],
+    "explanation": "Der EuGH erklärte das Privacy Shield für ungültig und stellte klar, dass Standardvertragsklauseln durch ergänzende Schutzmaßnahmen abgesichert werden müssen (Schrems II, C-311/18)."
+  },
+  {
+    "question": "Was regelt Art. 49 DSGVO?",
+    "answers": ["ausnahmeregelungen bei fehlenden garantien", "übermittlung bei einwilligung oder notwendigkeit", "gelegentliche übermittlungen bei besonderen gründen"],
+    "explanation": "Art. 49 DSGVO enthält Ausnahmetatbestände für bestimmte Fälle – z. B. Einwilligung, Vertragsdurchführung oder öffentliches Interesse."
+  },
+  {
+    "question": "Was bedeutet 'Schutzniveau muss im Drittstaat gewährleistet sein'?",
+    "answers": ["vergleichbarer datenschutz wie in der eu", "angemessene sicherheitsmaßnahmen und rechte", "keine massenüberwachung"],
+    "explanation": "Eine Datenübermittlung darf nur erfolgen, wenn das Schutzniveau für personenbezogene Daten im Drittstaat dem der EU im Wesentlichen entspricht (vgl. Schrems II)."
   }
 ]
