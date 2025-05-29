@@ -261,4 +261,46 @@ body.start-screen {
   color: #00bcd4;
   text-decoration: underline;
 }
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+
+  .quiz-container,
+  .container,
+  .privacy-box,
+  .privacy-details {
+    padding: 1rem;
+    border-radius: 8px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .start-button,
+  .next-button,
+  button,
+  input[type="text"] {
+    font-size: 1rem;
+    padding: 0.8em 1.2em;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .footer {
+    font-size: 0.8em;
+    padding: 10px;
+  }
+
+  .animated-emoji {
+    font-size: 1.5em;
+  }
+
+  h1, h2 {
+    font-size: 1.5em;
+  }
+
+  .subtitle {
+    font-size: 1em;
+  }
+}
 
