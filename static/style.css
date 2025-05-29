@@ -236,3 +236,28 @@ body.start-screen {
   transform: scale(1.05);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  font-size: 0.9em;
+  color: #666;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e0e0e0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.footer a {
+  color: #444;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: #0077cc;
+  text-decoration: underline;
+}
+
