@@ -76,6 +76,10 @@ def done():
 def reset():
     session.clear()
     return redirect(url_for("quiz"))
+    
+@app.route("/datenschutz")
+def datenschutz():
+    return render_template("datenschutz.html")
 
 # App starten
 if __name__ == "__main__":
