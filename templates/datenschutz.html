@@ -2,15 +2,55 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <title>Datenschutzhinweis</title>
+  <title>Datenschutzerklärung</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body.datenschutz-page {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background-color: #121212;
+      color: #f1f1f1;
+      padding: 2em 1em;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .datenschutz-content {
+      max-width: 600px;
+      margin: auto;
+      flex: 1;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 1em;
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 1.5em;
+    }
+
+    a.back-link {
+      color: #00bcd4;
+      text-decoration: none;
+    }
+
+    a.back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
-<body>
-  <div class="quiz-container">
-    <h1>📘 Datenschutzhinweis</h1>
-    <p>Dieses Quiz verwendet ausschließlich technische Sitzungsdaten (Session), um deinen Punktestand zu speichern. Es werden keine Cookies für Tracking, Werbung oder Analyse verwendet. Die Nutzung erfolgt vollständig anonym.</p>
-    <p><a href="{{ url_for('quiz') }}">Zurück zum Quiz</a></p>
+<body class="datenschutz-page">
+  <div class="datenschutz-content">
+    <h1>🔐 Datenschutzerklärung</h1>
+    <p>Wir nehmen den Schutz Deiner Daten ernst. In dieser Quiz-Anwendung werden keine personenbezogenen Daten gespeichert, weitergegeben oder analysiert.</p>
+    <p>Die Antworten werden nur im temporären Session-Speicher gehalten und nicht dauerhaft aufgezeichnet.</p>
+    <p>Weitere Informationen kannst Du jederzeit bei uns anfordern.</p>
+
+    <a href="{{ url_for('quiz') }}" class="back-link">⬅️ Zurück zur Startseite</a>
   </div>
 </body>
 </html>
