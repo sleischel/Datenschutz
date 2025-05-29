@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Datenschutzhinweis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>📘 Datenschutzhinweis</h1>
+    <p>Dieses Quiz verwendet ausschließlich technische Sitzungsdaten (Session), um deinen Punktestand zu speichern. Es werden keine Cookies für Tracking, Werbung oder Analyse verwendet. Die Nutzung erfolgt vollständig anonym.</p>
+    <p><a href="{{ url_for('quiz') }}">Zurück zum Quiz</a></p>
+  </div>
+</body>
+</html>
