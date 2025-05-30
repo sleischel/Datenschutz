@@ -37,7 +37,7 @@ def questions_route(qid):
             feedback = "✅ Richtig!"
             session["score"] += 1
         else:
-            feedback = f"❌ Falsch. Richtige Antwort: {question_data['answers'][0]}"
+            feedback = "❌ Falsch."
 
         return render_template(
             "questions.html",
