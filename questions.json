@@ -11,7 +11,7 @@
   },
   {
     "question": "Welches Verhältnis besteht zwischen DSGVO und BDSG?",
-    "answers": ["dsgvo hat vorrang", "dsgvo gilt unmittelbar", "bdsg konkretisiert dsgvo"],
+    "answers": ["dsgvo hat vorrang", "dsgvo gilt unmittelbar", "bdsg konkretisiert dsgvo", "lex specialis"],
     "explanation": "Die DSGVO gilt unmittelbar und hat Anwendungsvorrang; das BDSG ergänzt nur bei Öffnungsklauseln."
   },
   {
