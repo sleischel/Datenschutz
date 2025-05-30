@@ -9,16 +9,11 @@
 </head>
 <body class="quiz-screen">
   <div class="quiz-container">
-    <div class="score-box">
-  Punktestand: {{ score }} / {{ total }}
-  <div class="progress-bar-container">
-    <div class="progress-bar-fill" style="width: {{ (score / total) * 100 }}%;"></div>
-  </div>
-</div>
-    <h1>Frage {{ qid + 1 }}</h1>
-    <div class="score-badge">
+  <div class="score-badge">
   🧠 Dein Punktestand: <span>{{ score }}</span> / {{ total }}
   </div>
+    <h1>Frage {{ qid + 1 }}</h1>
+    
     <p class="question-text">{{ question }}</p>
 
     <form method="post">
