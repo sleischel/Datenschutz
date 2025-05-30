@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import json
 import random
+import re  # für Normalisierung
 
 app = Flask(__name__)
 app.secret_key = "supergeheim"  # In Produktion sicher setzen!
@@ -9,12 +10,16 @@ app.secret_key = "supergeheim"  # In Produktion sicher setzen!
 with open("questions.json", "r", encoding="utf-8") as f:
     questions = json.load(f)
 
-# Neue Startseite /quiz.html
+# Hilfsfunktion zur Normalisierung von Antworten
+def normalize_answer(ans):
+    return re.sub(r"[^\wäöüß]", "", ans.lower().strip())
+
+# Startseite
 @app.route("/")
 def quiz_start():
     return render_template("quiz.html")
 
-# Fragen-Logik
+# Fragenlogik
 @app.route("/questions/<int:qid>", methods=["GET", "POST"])
 def questions_route(qid):
     if "score" not in session:
@@ -30,10 +35,11 @@ def questions_route(qid):
     feedback = None
 
     if request.method == "POST":
-        user_answer = request.form.get("answer", "").strip().lower()
-        correct_answers = [ans.strip().lower() for ans in question_data["answers"]]
+        user_answer = request.form.get("answer", "")
+        normalized_user_answer = normalize_answer(user_answer)
+        correct_answers = [normalize_answer(ans) for ans in question_data["answers"]]
 
-        if user_answer in correct_answers:
+        if normalized_user_answer in correct_answers:
             feedback = "✅ Richtig!"
             session["score"] += 1
         else:
@@ -54,7 +60,6 @@ def questions_route(qid):
         "questions.html",
         question=question_data["question"],
         feedback=None,
-        correct_answers=question_data["answers"],
         explanation=question_data.get("explanation", ""),
         qid=qid,
         next_qid=qid + 1,
@@ -86,4 +91,3 @@ def impressum():
 # App starten
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
-
