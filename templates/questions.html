@@ -20,11 +20,10 @@
       <input type="text" name="answer" placeholder="Deine Antwort" required>
       <button type="submit">✅ Antwort prüfen</button>
     </form>
-
-    {% if feedback %}
-      <div class="feedback">{{ feedback }}</div>
-      <div class="correct-answer">Richtige Antwort: {{ correct_answers }}</div>
-      <div class="explanation">💡 Erklärung: {{ explanation }}</div>
+{% if feedback %}
+  <div class="feedback">{{ feedback }}</div>
+  {% if explanation %}
+    <div class="explanation">💡 Erklärung: {{ explanation }}</div>
     <a href="{{ url_for('questions_route', qid=next_qid) }}" class="next-button">➡️ Nächste Frage</a>
     {% endif %}
   </div>
