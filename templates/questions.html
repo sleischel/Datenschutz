@@ -16,6 +16,9 @@
   </div>
 </div>
     <h1>Frage {{ qid + 1 }}</h1>
+    <div class="score-badge">
+  🧠 Dein Punktestand: <span>{{ score }}</span> / {{ total }}
+  </div>
     <p class="question-text">{{ question }}</p>
 
     <form method="post">
