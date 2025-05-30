@@ -26,6 +26,7 @@
     <div class="explanation">💡 Erklärung: {{ explanation }}</div>
     <a href="{{ url_for('questions_route', qid=next_qid) }}" class="next-button">➡️ Nächste Frage</a>
     {% endif %}
+  {% endif %}
   </div>
 </body>
 </html>
