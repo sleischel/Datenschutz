@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressum</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="container">
+  <h1>Impressum</h1>
+
+  <h2>Angaben gemäß § 5 DDG (Digitale-Dienste-Gesetz)</h2>
+  <p>
+    Sarah Leischel<br>
+    Musterstraße 1<br>
+    12345 Musterstadt<br>
+    Deutschland
+  </p>
+
+  <h2>Kontakt</h2>
+  <p>
+    Telefon: 01234 / 567890<br>
+    E-Mail: <a href="mailto:max@mustermann.de">max@mustermann.de</a>
+  </p>
+
+  <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+  <p>
+    Sarah Leischel<br>
+    Musterstraße 1<br>
+    12345 Musterstadt
+  </p>
+
+  <h2>Haftungsausschluss</h2>
+  <p>
+    Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für
+    die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind
+    ausschließlich deren Betreiber verantwortlich.
+  </p>
+
+  <footer class="footer">
+    <a href="{{ url_for('quiz_start') }}">🔙 Zurück zur Startseite</a>
+  </footer>
+</body>
+</html>
