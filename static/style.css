@@ -325,6 +325,23 @@ body.start-screen {
     background-color: #4ade80;
     transition: width 0.6s ease-in-out;
 }
+.score-badge {
+    background-color: #14532d;
+    color: #bbf7d0;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-weight: bold;
+    font-size: 1.1em;
+    display: inline-block;
+    margin: 1em 0;
+    box-shadow: 0 0 8px #22c55e, 0 0 16px #22c55e;
+    animation: pop-in 0.4s ease-out;
+}
+
+@keyframes pop-in {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
 
 
 
