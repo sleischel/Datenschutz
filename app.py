@@ -3,21 +3,15 @@ import json
 import random
 
 app = Flask(__name__)
-app.secret_key = "supergeheim"  # In Produktion sicher setzen
+app.secret_key = "supergeheim"  # In Produktion sicher setzen!
 
 # Fragen aus JSON laden
 with open("questions.json", "r", encoding="utf-8") as f:
     questions = json.load(f)
 
-# Einstiegsseite → leitet auf /quiz weiter
+# Neue Startseite /quiz.html
 @app.route("/")
-def index():
-    return redirect(url_for("quiz"))
-
-# Animierte Startseite
-@app.route("/quiz")
-def quiz():
-    session.clear()
+def quiz_start():
     return render_template("quiz.html")
 
 # Fragen-Logik
@@ -55,10 +49,11 @@ def questions_route(qid):
             total=len(questions),
             score=session["score"]
         )
+
     return render_template(
         "questions.html",
         question=question_data["question"],
-        feedback=feedback,
+        feedback=None,
         correct_answers=question_data["answers"],
         explanation=question_data.get("explanation", ""),
         qid=qid,
@@ -66,6 +61,7 @@ def questions_route(qid):
         total=len(questions),
         score=session["score"]
     )
+
 # Abschlussseite
 @app.route("/done")
 def done():
@@ -75,12 +71,19 @@ def done():
 @app.route("/reset")
 def reset():
     session.clear()
-    return redirect(url_for("quiz"))
-    
+    return redirect(url_for("quiz_start"))
+
+# Datenschutzerklärung
 @app.route("/datenschutz")
 def datenschutz():
     return render_template("datenschutz.html")
 
+# Impressum
+@app.route("/impressum")
+def impressum():
+    return render_template("impressum.html")
+
 # App starten
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
