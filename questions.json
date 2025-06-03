@@ -4,6 +4,15 @@
     "answers": ["recht auf informationelle selbstbestimmung", "informationelle selbstbestimmung"],
     "explanation": "Das BVerfG leitete aus Art. 2 Abs. 1 i.V.m. Art. 1 Abs. 1 GG das Grundrecht auf informationelle Selbstbestimmung ab."
   },
+    {
+    "question": "Was bedeutet das Marktortprinzip gemäß Art. 3 Abs. 2 DSGVO?",
+    "answers": ["Auch nicht in der EU niedergelassene Verantwortliche oder Auftragsverarbeiter unterliegen der DSGVO", "territoriale Reichweitenerstreckung"],
+    "explanation": "Das Marktortprinzip nach Art. 3 Abs. 2 DSGVO bedeutet: 
+      Auch nicht in der EU niedergelassene Verantwortliche oder Auftragsverarbeiter unterliegen der DSGVO, wenn sie
+      - Waren oder Dienstleistungen (auch unentgeltlich) an Personen in der EU anbieten (Art. 3 Abs. 2 lit. a), oder
+      - Verhaltensbeobachtungen von Personen in der EU durchführen (Art. 3 Abs. 2 lit. b, z. B. Tracking, Profiling).
+      📝 Indizien: Sprache, Währung, Versandoptionen in die EU, Verhaltenstracking mit Tools wie Pixeln."
+  },
   {
     "question": "Welcher Artikel der EMRK schützt das Privatleben?",
     "answers": ["artikel 8 emrk", "art 8 emrk"],
